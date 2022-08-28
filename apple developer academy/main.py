@@ -1,11 +1,20 @@
+#Importando as Bibliotecas usadas
 import PySimpleGUI as sg
-import random
+from random import choice
 
+
+#Criando a funçaõ principal do programa
 def main():
-
+    #y é o número de alunos e serve como contador no looping
     y = 20
+
+    #Vetor com todos os alunos
     vetor = ['Laura', 'Pedro', 'João', 'Vinicius', 'Carlos', 'Maria', 'Leonardo', 'Ana', 'Daniela', 'Marcos', 'Wesley', 'Luiza', 'Daiane', 'Felipe', 'Teodoro', 'Helena', 'Natalia','Beatriz','Eduardo', 'Caio']
+    
+    #Vetor com a saída de dados
     saida = []
+
+    #Vetores com as possíveis duplas de cada aluno
     vetorPedro = [ 'Carlos', 'Maria', 'Leonardo', 'Ana','Marcos', 'Wesley', 'Luiza', 'Daiane', 'Felipe', 'Teodoro', 'Helena', 'Natalia','Beatriz','Eduardo']
     vetorJoao = [ 'Maria', 'Leonardo', 'Ana', 'Daniela', 'Marcos', 'Wesley', 'Luiza', 'Daiane', 'Felipe', 'Teodoro', 'Natalia','Beatriz','Eduardo', 'Caio']
     vetorLaura =['Carlos', 'Ana', 'Daniela', 'Marcos', 'Wesley', 'Luiza', 'Daiane', 'Felipe', 'Teodoro', 'Helena', 'Natalia','Beatriz','Eduardo', 'Caio']
@@ -26,15 +35,7 @@ def main():
     vetorEduardo = ['Laura', 'Pedro', 'João', 'Vinicius', 'Carlos', 'Maria', 'Leonardo', 'Ana', 'Daniela', 'Marcos', 'Wesley', 'Luiza', 'Daiane', 'Teodoro', 'Helena']
     vetorCaio = ['Laura', 'João', 'Vinicius', 'Carlos', 'Maria', 'Leonardo', 'Ana', 'Marcos', 'Wesley', 'Luiza', 'Daiane', 'Felipe', 'Teodoro', 'Helena']
 
-
-    '''vetorLaura = [vetor]
-    vetorPedro = [vetor]
-    vetorVinicius =[vetor]
-    vetorMaria = [vetor]
-    vetorLeonardo = [vetor]
-    vetorAna = [vetor]
-    vetorDaniela = [vetor]'''
-
+    #Função que remove o aluno sorteado para ser dupla do cabeça de chave de todos os vetores de possibilidade
     def removerSorteado():
         #laura
         if resultado2 in vetorLaura:
@@ -92,32 +93,34 @@ def main():
             vetorCaio.remove(resultado2)
     
 
-
+    #looping que sorteia os alunos até que as duplas estejam completas
     while y != 0:
         i=0
-        resultado = random.choice(vetor)
-        #vetor [ random.randrange ( len ( vetor ))]
+        resultado = choice(vetor)
+
+        #Cada if faz parte de uma série de condições que analiza qual aluno foi sorteado como cabeça de chave
         if resultado == "Laura":
-            resultado2 =  random.choice(vetorLaura)
+            resultado2 =  choice(vetorLaura)
             vetor.remove(resultado)
-        
+            
+            #Looping que sorteia a dupla de Laura
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorLaura)
+                resultado2 = choice(vetorLaura)
             vetor.remove(resultado2)
             removerSorteado()
     
             resultado3 = "Laura e "+ resultado2
             saida.append(resultado3)
             y=y-2
-            i=i+1
-
+            
+        #As condições se repetem para todos, serve como um switch case.
 
         if resultado == "Pedro":
-            resultado2 =  random.choice(vetorPedro)
+            resultado2 =  choice(vetorPedro)
         
             vetor.remove(resultado)
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorPedro)
+                resultado2 = choice(vetorPedro)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -127,12 +130,12 @@ def main():
 
 
         if resultado == "João":
-            resultado2 =  random.choice(vetorJoao)
+            resultado2 =  choice(vetorJoao)
         
             vetor.remove(resultado)
 
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorJoao)
+                resultado2 = choice(vetorJoao)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -141,10 +144,10 @@ def main():
             saida.append(resultado3)
 
         if resultado == "Vinicius":
-            resultado2 = random.choice(vetorVinicius)
+            resultado2 = choice(vetorVinicius)
             vetor.remove(resultado)
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorVinicius)
+                resultado2 = choice(vetorVinicius)
         
             vetor.remove(resultado2)
             removerSorteado()
@@ -157,10 +160,10 @@ def main():
 
 
         if resultado == "Maria":
-            resultado2 = random.choice(vetorMaria)
+            resultado2 = choice(vetorMaria)
             vetor.remove(resultado)
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorMaria)
+                resultado2 = choice(vetorMaria)
             vetor.remove(resultado2)
             removerSorteado()
         
@@ -170,10 +173,10 @@ def main():
 
 
         if resultado == 'Leonardo':
-            resultado2 = random.choice(vetorLeonardo)
+            resultado2 = choice(vetorLeonardo)
             vetor.remove(resultado)
             while resultado2 not in vetor:    
-                resultado2 = random.choice(vetorLeonardo)
+                resultado2 = choice(vetorLeonardo)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -184,11 +187,11 @@ def main():
 
 
         if resultado == "Ana":
-            resultado2 = random.choice(vetorAna)
+            resultado2 = choice(vetorAna)
             vetor.remove(resultado)
             
             while resultado2 not in vetor:    
-                resultado2 = random.choice(vetorAna)
+                resultado2 = choice(vetorAna)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -198,11 +201,11 @@ def main():
 
 
         if resultado == "Daniela":
-            resultado2 = random.choice(vetorDaniela)
+            resultado2 = choice(vetorDaniela)
             vetor.remove(resultado)
         
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorDaniela)
+                resultado2 = choice(vetorDaniela)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -214,11 +217,11 @@ def main():
     
     
         if resultado == "Marcos":
-            resultado2 = random.choice(vetorMarcos)
+            resultado2 = choice(vetorMarcos)
             vetor.remove(resultado)
         
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorMarcos)
+                resultado2 = choice(vetorMarcos)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -227,10 +230,10 @@ def main():
             saida.append(resultado3)
 
         if resultado == "Wesley":
-            resultado2 = random.choice(vetorWesley)
+            resultado2 = choice(vetorWesley)
             vetor.remove(resultado)
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorWesley)
+                resultado2 = choice(vetorWesley)
             
             vetor.remove(resultado2)
             removerSorteado()
@@ -241,11 +244,11 @@ def main():
 
 
         if resultado == "Luiza":
-            resultado2 = random.choice(vetorLuiza)
+            resultado2 = choice(vetorLuiza)
             vetor.remove(resultado)
         
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorLuiza)
+                resultado2 = choice(vetorLuiza)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -255,10 +258,10 @@ def main():
 
 
         if resultado == "Daiane":
-            resultado2 = random.choice(vetorDaiane)
+            resultado2 = choice(vetorDaiane)
             vetor.remove(resultado)
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorDaiane)
+                resultado2 = choice(vetorDaiane)
             
             vetor.remove(resultado2)
             removerSorteado()
@@ -269,10 +272,10 @@ def main():
 
     
         if resultado == "Felipe":
-            resultado2 = random.choice(vetorFelipe)
+            resultado2 = choice(vetorFelipe)
             vetor.remove(resultado)
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorFelipe)
+                resultado2 = choice(vetorFelipe)
             
             vetor.remove(resultado2)
             removerSorteado()
@@ -283,11 +286,11 @@ def main():
 
 
         if resultado == "Helena":
-            resultado2 = random.choice(vetorHelena)
+            resultado2 = choice(vetorHelena)
             vetor.remove(resultado)
         
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorHelena)
+                resultado2 = choice(vetorHelena)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -298,11 +301,11 @@ def main():
 
 
         if resultado == "Natalia":
-            resultado2 = random.choice(vetorNatalia)
+            resultado2 = choice(vetorNatalia)
             vetor.remove(resultado)
         
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorNatalia)
+                resultado2 = choice(vetorNatalia)
             
             vetor.remove(resultado2)
             removerSorteado()
@@ -313,11 +316,11 @@ def main():
 
 
         if resultado == "Beatriz":
-            resultado2 = random.choice(vetorBeatriz)
+            resultado2 = choice(vetorBeatriz)
             vetor.remove(resultado)
         
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorBeatriz)
+                resultado2 = choice(vetorBeatriz)
             
             vetor.remove(resultado2)
             removerSorteado()
@@ -329,10 +332,10 @@ def main():
 
     
         if resultado == "Eduardo":
-            resultado2 = random.choice(vetorEduardo)
+            resultado2 = choice(vetorEduardo)
             vetor.remove(resultado)
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorEduardo)
+                resultado2 = choice(vetorEduardo)
             vetor.remove(resultado2)
             removerSorteado()
 
@@ -342,10 +345,10 @@ def main():
 
 
         if resultado == "Caio":
-            resultado2 = random.choice(vetorCaio)
+            resultado2 = choice(vetorCaio)
             vetor.remove(resultado)
             while resultado2 not in vetor:
-                resultado2 = random.choice(vetorCaio)
+                resultado2 = choice(vetorCaio)
         
             vetor.remove(resultado2)
             removerSorteado()
@@ -353,6 +356,8 @@ def main():
             resultado3 = 'Caio e ' + resultado2
             y=y-2
             saida.append(resultado3)
+    
+    #Declara as variáveis para serem utilizadas na interface
     global saida1,saida2,saida3,saida4,saida5, saida6,saida7,saida8,saida9,saida10
 
     saida1=saida[0]
